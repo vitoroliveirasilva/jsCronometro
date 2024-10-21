@@ -114,3 +114,14 @@ body {
 #lista p:hover {
     color: var(--cronometro-borda);
 }
+
+
+/* ===== Estilo para dispositivos menores ===== */
+@media screen and (min-width: 767px) {
+
+    /* Anula o efeitio hover nos botões do menu de opções */
+    #menu_opcoes button:hover {
+        color: var(--white);
+    }
+
+}
