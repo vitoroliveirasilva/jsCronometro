@@ -1,0 +1,116 @@
+/* ===== Importação da fonte (Google Fonts) ===== */
+@import url('https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100..900;1,100..900&display=swap');
+
+
+/* ===== Variáveis de cores globais ===== */
+:root {
+    --background: linear-gradient(180deg, var(--cronometro-borda), #5c0fcf);
+    --cronometro-background: #262626;
+    --cronometro-borda: #955ffa;
+    --white: #fff;
+}
+
+
+/* ===== Estilo geral ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Exo 2', Courier, monospace;
+    background: None;
+}
+
+
+/* ===== Estilo para o body da página ===== */
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    height: 100vh;
+    width: 100vw;
+    background: var(--background);
+}
+
+
+/* ===== Estilo para o card do cronômetro ===== */
+#card {
+    background-color: var(--cronometro-background);
+    padding: 2rem;
+    border-radius: 25px;
+}
+
+
+/* ===== Estilo para o temporizador no card ===== */
+#card #timer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 300px;
+    width: 300px;
+    border: 3px solid var(--cronometro-borda);
+    border-radius: 100%;
+    font-weight: 600;
+    font-size: 30px;
+    color: var(--white);
+    margin-bottom: 1.8rem;
+    cursor: default;
+}
+
+
+/* ===== Estilo para o menu de opções no card ===== */
+#menu_opcoes {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    gap: .5rem;
+}
+
+/* Classe para adicionar a margin-bottom dinamicamente */
+.margin-bottom {
+    margin-bottom: 2rem;
+}
+
+#menu_opcoes button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 45px;
+    font-size: 1.3rem;
+    border: 2px solid var(--cronometro-borda);
+    color: var(--white);
+    border-radius: 10px;
+    cursor: pointer;
+    transition: color .3s ease;
+}
+
+#menu_opcoes button:hover {
+    color: var(--cronometro-borda);
+}
+
+
+/* ===== Estilo para a lista com as marcações no card ===== */
+#lista {
+    display: flex;
+    flex-direction: column;
+    gap: .7rem;
+    color: var(--white);
+    max-height: 15rem;
+    overflow-y: auto;
+}
+
+#lista p {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-direction: row;
+    color: var(--white);
+    font-size: 1.2rem;
+    transition: color .3s ease;
+}
+
+#lista p:hover {
+    color: var(--cronometro-borda);
+}
