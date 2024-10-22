@@ -4,7 +4,7 @@ Este projeto é um cronômetro desenvolvido com **HTML**, **CSS** e **JavaScript
 
 ## Interface
 
-![image](https://github.com/user-attachments/assets/5ef2ee4e-a0ba-4cdd-b55c-b12b3e07c23b)
+![image](https://github.com/user-attachments/assets/06e7c369-d554-4bfb-9bca-9bb977684040)
 
 ## Funcionalidades
 
