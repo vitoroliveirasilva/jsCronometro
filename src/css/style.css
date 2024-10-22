@@ -69,7 +69,7 @@ body {
 
 /* Classe para adicionar a margin-bottom dinamicamente */
 .margin-bottom {
-    margin-bottom: 2rem;
+    margin-bottom: 1.7rem;
 }
 
 #menu_opcoes button {
@@ -90,6 +90,9 @@ body {
     color: var(--cronometro-borda);
 }
 
+#menu_opcoes .display-none {
+    display: none;
+}
 
 /* ===== Estilo para a lista com as marcações no card ===== */
 #lista {
@@ -97,17 +100,17 @@ body {
     flex-direction: column;
     gap: .7rem;
     color: var(--white);
-    max-height: 15rem;
+    max-height: 8rem;
     overflow-y: auto;
 }
 
 #lista p {
     display: flex;
     align-items: center;
-    justify-content: space-around;
-    flex-direction: row;
+    justify-content: space-between;
     color: var(--white);
-    font-size: 1.2rem;
+    font-size: 1.1rem;
+    padding: 0 .5rem 0 .5rem;
     transition: color .3s ease;
 }
 
@@ -115,9 +118,20 @@ body {
     color: var(--cronometro-borda);
 }
 
+#lista p .mark-dif {
+    text-align: center;
+    filter: brightness(.6);
+}
+
+#lista p .mark-time {
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+}
+
 
 /* ===== Estilo para dispositivos menores ===== */
-@media screen and (min-width: 767px) {
+@media screen and (max-width: 800px) {
 
     /* Anula o efeitio hover nos botões do menu de opções */
     #menu_opcoes button:hover {
