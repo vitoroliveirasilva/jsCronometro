@@ -56,17 +56,23 @@ O arquivo `index.html` contém a estrutura básica do cronômetro:
 
 O arquivo `style.css` define o estilo visual do cronômetro:
 
-- Utiliza variáveis de cor para facilitar a personalização.
-- Adiciona estilo aos elementos para um layout responsivo e atrativo.
-- Inclui transições suaves para a interação do usuário.
+- **Fonte e Layout**: Usa a fonte 'Exo 2' do Google Fonts para um estilo moderno e cria um layout centralizado com flexbox.
+- **Temas e Cores**: Utiliza variáveis de cores globais, permitindo fácil personalização. O plano de fundo do cronômetro é um gradiente linear com bordas destacadas.
+- **Responsividade**: O layout é adaptável a diferentes tamanhos de tela, com ajustes específicos para dispositivos menores.
+- **Transições Suaves**: Aplica transições sutis em botões e elementos interativos para uma melhor experiência do usuário.
+- **Interação Visual**: O botão de marcação e a lista de marcações apresentam estilos dinâmicos ao passar o mouse, além de utilizar ícones FontAwesome para um visual mais atrativo.
 
 ### JavaScript
 
 O arquivo `script.js` contém a lógica do cronômetro:
 
-- **Controle de Tempo**: Usa `setInterval` para atualizar o temporizador.
-- **Marcação de Tempo**: Permite que o usuário registre até 100 marcas de tempo.
-- **Controle de Estado**: Inicia, pausa e reinicia o cronômetro conforme necessário.
+- **Controle de Tempo**: Utiliza `setInterval` para controlar a execução do cronômetro em intervalos de 10 milissegundos.
+- **Formatação de Tempo**: Implementa a função `formatTime` para exibir o tempo no formato HH:MM:SS:MS.
+- **Marcação de Tempo**: Permite que o usuário registre até 1.000 marcas de tempo, exibindo a diferença entre a marcação atual e a anterior.
+- **Controle de Estado**: Alterna entre iniciar, pausar, continuar e resetar o cronômetro através da função `toggleTimer`.
+- **Atualização Dinâmica**: O cronômetro e a lista de marcações são atualizados dinamicamente na página, sem necessidade de recarregamento.
+- **Limite de Marcações**: Ao atingir o limite de 1.000 marcações, o sistema notifica o usuário.
+- **Resets e Interações**: O botão de reset limpa o cronômetro, a lista de marcações e restaura os botões para o estado inicial.
 
 ### Funções Principais
 
