@@ -50,7 +50,7 @@ const toggleTimer = () => {
         intervalId = setInterval(() => { // Inicia o intervalo
             timer += 1; // Incrementa o tempo
             setTimer(timer); // Atualiza a exibição do temporizador
-        }, 1); // Atualiza a cada 10 milissegundos
+        }, 10); // Atualiza a cada 10 milissegundos
         button.setAttribute('action', 'pause'); // Atualiza a ação do botão
         button.innerHTML = '<i class="fa-solid fa-pause"></i>'; // Atualiza o ícone do botão
     } else if (action === 'pause') { // Se o cronômetro estiver pausado
