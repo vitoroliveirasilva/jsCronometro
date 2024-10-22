@@ -4,6 +4,8 @@ const timerEl = document.getElementById('timer');
 const lista = document.getElementById('lista');
 // Seleciona o menu de opções onde os botões estão localizados
 const menuOpcoes = document.getElementById('menu_opcoes');
+// Seleciona o elemento de marcação na página
+const marcarEl = document.getElementById('marcar');
 
 
 // Variáveis para controle do cronômetro e das marcações
@@ -24,6 +26,13 @@ const formatTime = (time) => {
 }
 
 
+// Função para calcular a diferença entre duas marcações
+const calculateDifference = (currentTime, lastTime) => {
+    const diff = currentTime - lastTime;
+    return formatTime(diff); // Retorna a diferença de tempo formatada
+}
+
+
 // Função para atualizar a exibição do temporizador
 const setTimer = (time) => {
     timerEl.innerText = formatTime(time); // Atualiza o texto do temporizador
@@ -31,11 +40,16 @@ const setTimer = (time) => {
 
 
 // Função para adicionar uma marcação à lista
-const addMarkToList = (markIndex, markTime) => {
-    // Adiciona um novo parágrafo com a marcação na lista
-    lista.innerHTML += `<p>Marcação ${markIndex}: ${formatTime(markTime)} <i class="fa-solid fa-flag fa-rotate-by" style="--fa-rotate-angle: 15deg;"></i></p>`;
-    lista.scrollTop = lista.scrollHeight; // Scroll pro final da lista
-}
+const addMarkToList = (markIndex, markTime, diffTime) => {
+    // Adiciona um novo parágrafo com a marcação e a diferença
+    lista.innerHTML += `
+        <p>
+            <span class="mark-number">${String(markIndex).padStart(2, '0')}</span>
+            <span class="mark-dif">+${diffTime}</span>
+            <span class="mark-time">${formatTime(markTime)} <i class="fa-solid fa-flag fa-rotate-by" style="--fa-rotate-angle: 15deg;"></i></span>
+        </p>`;
+    lista.scrollTop = lista.scrollHeight; // Scroll para o final da lista
+};
 
 
 // Função para alternar o estado do cronômetro (iniciar, pausar, continuar)
@@ -53,9 +67,11 @@ const toggleTimer = () => {
         }, 10); // Atualiza a cada 10 milissegundos
         button.setAttribute('action', 'pause'); // Atualiza a ação do botão
         button.innerHTML = '<i class="fa-solid fa-pause"></i>'; // Atualiza o ícone do botão
+        marcarEl.classList.remove('display-none'); // Remove a classe display-none no botão de marcação
     } else if (action === 'pause') { // Se o cronômetro estiver pausado
         button.setAttribute('action', 'continue'); // Permite continuar
         button.innerHTML = '<i class="fa-solid fa-play"></i>'; // Atualiza o ícone do botão
+        marcarEl.classList.add('display-none'); // Adiciona a classe display-none no botão de marcação
     }
 }
 
@@ -64,18 +80,22 @@ const toggleTimer = () => {
 const markTime = () => {
     // Verifica se o cronômetro foi iniciado
     if (intervalId !== 0) {
-        if (marks.length < 100) { // Verifica se o limite de marcações foi alcançado
+        if (marks.length < 1000) { // Verifica se o limite de marcações foi alcançado
+            const lastMark = marks.length > 0 ? marks[marks.length - 1] : 0; // Última marcação ou 0 se for a primeira
+            const diffTime = calculateDifference(timer, lastMark); // Calcula a diferença entre a marcação atual e a última
+
             marks.push(timer); // Adiciona o tempo atual ao array de marcações
-            addMarkToList(marks.length, timer); // Adiciona a marcação à lista
+            addMarkToList(marks.length, timer, diffTime); // Adiciona a marcação à lista com a diferença de tempo
+
             // Adiciona a classe margin-bottom após a primeira marcação
             if (marks.length === 1) {
                 menuOpcoes.classList.add('margin-bottom'); // Adiciona a margem se for a primeira marcação
             }
         } else {
-            alert("Limite de 50 marcações atingido!"); // Alerta se o limite foi alcançado
+            alert("Limite de 1.000 marcações atingido!"); // Alerta se o limite foi alcançado
         }
     } else {
-        alert("Por favor, inicie o cronômetro antes de marcar!"); // Alerta se o cronômetro não foi iniciado
+        alert("Por favor, inicie o cronômetro antes de marcar."); // Alerta se o cronômetro não foi iniciado
     }
 }
 
@@ -92,6 +112,7 @@ const resetarTimer = () => {
     button.setAttribute('action', 'start'); // Reseta a ação do botão para iniciar
     button.innerHTML = '<i class="fa-solid fa-play"></i>'; // Atualiza o ícone do botão
     menuOpcoes.classList.remove('margin-bottom'); // Remove a classe margin-bottom após o reset
+    marcarEl.classList.add('display-none'); // Adiciona a classe display-none no botão de marcação
 }
 
 
